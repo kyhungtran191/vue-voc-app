@@ -2,7 +2,11 @@
     <h2>My Friends</h2>
     <ul>
         <!-- <li v-for="friend in friends" :key="friend.id">{{ friend.name }}</li> -->
-        <friend-contact></friend-contact>
+        <friend-contact
+            v-for="friend in friends"
+            :key="friend.id"
+            v-bind="friend"
+        ></friend-contact>
     </ul>
 </template>
 <script>

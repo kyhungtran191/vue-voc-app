@@ -1,17 +1,23 @@
 <template>
     <li>
-        <h2>{{ friend.name }}</h2>
+        <h2>{{ name }}</h2>
         <button @click="toggleDetail">Show Detail</button>
         <ul v-if="isVisible">
-            <li><strong>Phone:</strong>{{ friend.phone }}</li>
-            <li><strong>Email:</strong>{{ friend.email }}</li>
+            <li><strong>Phone:</strong>{{ phone }}</li>
+            <li><strong>Email:</strong>{{ email }}</li>
         </ul>
     </li>
 </template>
 
 <script>
 export default {
-    props: ['name','phoneNumber', 'emailAddress'],
+    props: ['name', 'phone', 'email'],
+    emits: {
+        'toggle-events': function (id) {
+            return id || false
+        },
+    },
+    // emits: [],
     data() {
         return {
             isVisible: false,
@@ -26,6 +32,7 @@ export default {
     methods: {
         toggleDetail() {
             this.isVisible = !this.isVisible
+            // this.$emit('toggle-events', this.isVisible)
         },
     },
 }
